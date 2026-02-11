@@ -175,21 +175,3 @@ PuddleTag is FAR superior and does everything Mp3Tag does, but better, and with 
 Guides
 
 [Obtaining YouTube PO Token for 256k audio](https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide)
-
-Welcome to the club my friend. You trade modern day "convenience" for autonomy and privacy. It will be worth it in the end. No more selling your soul and being told what you can and can't do or listen to by corporate overlords. I am reminded constantly how "worth it" putting in the effort is whenever I go to download more music and half of my favorite songs have disappeared off the face of the earth for a multitude of reasons — DMCA, Artist, Platform Licensing revocation, you name it.
-
-====================
-First of all if you're going to add your songs to Apple Music, they need to be in the encoded in MP3 in an MP3 container, or AAC/ALAC in an M4A container. I personally would use anything BUT MP3 as it's quite outdated and inferior on nearly every way (quality, compression, etc.) when compared to any contemporary audio codec. The only exception would be compatibility for early 2000's MP3 players.
-
-NOTE: When reencoding OPUS/MP3 to AAC, there will be a negligable decrease in quality, which is, imperceptible to the non-audiophile if done correctly, but still a decrease nonetheless. You would be going from 1 lossy codec to another lossy codec for compatibility with Apple. See my notes on ALAC below if you want to retain 100% quality when reencoding from MP3.
-
-You can download Music from YouTube Music using yt-dlp. You can also download all of your Spotify songs with SpotDL, which downloads the songs from YouTube Music, but embeds all of the respective lyrics and metadata into the file so it's essentially 1:1 with Spotify. Then you can use MP3Tag or PuddleTag (links below), to bulk tag your songs and create a M3U8 playlist. From there you can directly import the playlist into iTunes and then drag it onto your phone, which will transfer all of the music and the playlist.
-
-If you REALLY don't want to download the songs in better quality and are determined to stick with your MP3's, then you will most likely have to reencode to AAC. This can be done simply using FFmpeg.
-
-The command to reencode into 320kbps AAC in the M4A container while preserving metadata, album covers, dates, etc. would be:
-
-ffmpeg -i song.mp3 -map 0 -map_metadata 0 -c:a aac -b:a 320k output.m4a
-
-If you want to reencode losslessly, then remove -b:a 320k and change -c:a aac to -c:a alac (note the file size for each song will be about 3-4x larger than AAC)
-====================
