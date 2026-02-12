@@ -1,4 +1,6 @@
-# How to Bulk Download Your Spotify Playlists for FREE in Ultra HQ (2026 Beginner's Guide)
+# ***Updated 2026-02-12T23:46:37Z***
+
+# **IMPORTANT:** ***Just found out about SpotiFLAC. Use that if you have the storage. It will get most of your library. However this guide is still useful as some music videos and verified songs only found on YouTube are available in 771. Use this to fill in the rest of your library***
 
 This guide will explain to you how to bulk download your Spotify playlists in 256kbps OPUS for the highest quality, properly tagged files! I have attached my GitHub repository containing my spotDL configuration file and scripts. I will first go over how to download your songs both **WITH** and **WITHOUT** a YouTube Premium subscription. Unfortunately, the highest quality non-premium format is currently 251, which is ~128kbps OPUS. Following these same steps, I have successfully downloaded over 5,000 songs from YouTube Music, tagged with Spotify's metadata. It's the most beautiful thing to come out of modern day indie development.
 
@@ -20,17 +22,27 @@ I have left quite a bit out of this guide and its rudementary at best, but it sh
 
 ### Recommended
 
-- FFmpeg *OPTIONAL BUT RECOMMENDED*
-- mediainfo *OPTIONAL BUT RECOMMENDED*
-- Tagging Software (MP3Tag, PuddleTag) *OPTIONAL BUT RECOMMENDED*
+- FFmpeg (*OPTIONAL, BUT RECOMMENDED*)
+- mediainfo (*OPTIONAL, BUT RECOMMENDED*)
+- Tagging Software (*OPTIONAL, BUT RECOMMENDED*)
+    - MP3Tag
+    - PuddleTag)
 
 ### Optional Advanced Tools (Powerful Tools for Searching/Filtering Text)
 
 (*With my over 5,000 downloaded songs, these tools save me days of time when manipulating my library*)
 
-- ripgrep
-- find
-- sed
+- diff + Exportify (#1) 
+> *This simple kept me from loosing it when curating playlists/adding deluxe album versions/removing clean versions, etc. Ctrl + A doesn't add all songs sometimes, half of the songs I added a decade ago just gone because the artist reuploaded, the same version of both songs in my library but the one I have can't be found, and both are deleted with I remove the old. This is a MASSIVE TIMESAVER!!*
+
+- ripgrep (grep on steroids, extremely fast and refined file searching)
+- find (extremely useful for locating and creating taylored file lists) (*controversial Rust version available* - faster I.M.O, YMMV)
+- sed (useful in edge cases) (*controversial Rust version available* - faster I.M.O, YMMV)
+- rename (this can be done in puddletag, but still useful in some edge cases) (e.g. `rename 's/^[0-9]{4}\s+//' *` results in `1234 Artist - Song.flac --> Artist - Song.flac`
+- exiftool (e.g. `exiftool -b -Lyrics -w .lrc *.flac && exiftool -b -Picture -w %d%f_cover.jpg *.flac`)
+- oxipng (for storage space) (e.g. `oxipng -o6 -v --strip all *.png`)
+- prettier (formatting JSON info files) (e.g. `prettier --write *`
+- flac (binary) (test the integrity of your files) (e.g. `flac --test *.flac`)
 
 #### Configuring Your Spotify Developer App
 
@@ -90,7 +102,7 @@ Redirect URI(s): http://127.0.0.1:9900/
 11. Run the script
     - Linux: `chmod +x download-spotify-premium.sh && ./download-spotify-premium.sh`
     - Windows: `.\download-spotify-premium.ps1`
-12. Verify a song downloaded in format 771 (256k OPUS): `mediainfo --Full song.opus | rg -ie "bit rate.*|bitrate.*`
+12. Verify a song downloaded in format 771 (256k OPUS): `mediainfo --Full song.opus | rg -ie "bit rate.**`
 13. If done correctly, you should get an output similar to this:
 
 ``` bash
